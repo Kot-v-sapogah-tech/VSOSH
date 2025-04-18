@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дешифровка данных</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"/>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 400px;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .custom-file-upload {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      background-color: #4CAF50;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .custom-file-upload:hover {
+      background-color: #45a049;
+    }
+
+    .file-name {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #555;
+      word-wrap: break-word;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 15px 32px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      width: 100%;
+      margin: 10px 0;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+
+    .button:active {
+      background-color: #388e3c;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Дешифровка данных</h1>
+    <form action="#" method="POST" enctype="multipart/form-data">
+
+      <div class="input-group">
+        <label for="data">Выберите ZIP архив для расшифровки</label>
+        <label class="custom-file-upload" for="data">Выбрать файл</label>
+        <input type="file" id="data" name="data" accept=".zip" onchange="updateFileName()">
+      </div>
+
+      <div class="input-group">
+        <label for="key">Введите пароль</label>
+        <input type="text" id="key" name="key">
+      </div>
+
+      <div class="input-group">
+        <button type="submit" class="button">Дешифровать</button>
+      </div>
+
+      {% for mes in message %}
+        <div class="alert alert-danger" role="alert">
+          {{ mes }}
+        </div>
+      {% endfor %}
+    </form>
+  </div>
+
+  <script>
+    function updateFileName() {
+      const input = document.getElementById('data');
+      const fileNameDiv = document.getElementById('file-name');
+      if (input.files.length > 0) {
+        fileNameDiv.textContent = input.files[0].name;
+      }
+    }
+  </script>
+</body>
+</html>
