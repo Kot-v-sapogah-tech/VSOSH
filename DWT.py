@@ -14,7 +14,7 @@ class DWTSteganography:
     def _bits_to_bytes(self, bits):
         return np.packbits(bits).tobytes()
 
-    def _simulate_dwt(self, channel):
+    def _dwt(self, channel):
         channel = np.asarray(channel, dtype=np.float32)
         rows, cols = channel.shape
         rows_pad = rows + (rows % 2)
