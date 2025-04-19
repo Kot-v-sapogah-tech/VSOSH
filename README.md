@@ -33,9 +33,9 @@ def encrypt():
         'password': Ваш пароль,
         'datta': file_b64  
     }
-
-    res = requests.post('http://127.0.0.1:5000/api/enc', json=payload).json()['image'] # получение изображения в виде base64 кода
-    преобразование и сохрание данных
+    
+    res = requests.post('http://127.0.0.1:5000/api/enc', json=payload).json()['image']# получение изображения в виде base64 код
+    # преобразование и сохрание данных
     img_bytes = base64.b64decode(res)
     img_np = np.frombuffer(img_bytes, dtype=np.uint8)
     img = cv2.imdecode(img_np, cv2.IMREAD_COLOR)
@@ -43,6 +43,7 @@ def encrypt():
 
 
 def decrypt():
+    #аналогично шифрованию
     image = cv2.imread('stego_result.png')
     image_array = image.tolist()
 
@@ -53,13 +54,15 @@ def decrypt():
 
     response = requests.post('http://127.0.0.1:5000/api/dec', json=payload)
     try:
+        # получение данных и их расширения
         data_b64 = response.json()['data']
         ext = response.json()['ext']
 
+        # расшифровка данных и запись в файл 
         decoded_bytes = base64.b64decode(data_b64)
-
         with open('11extracted_result.' + ext, 'wb') as f:
             f.write(decoded_bytes)
     except:
+        # вывод ошибки
         print(response.json()['error'])
 ```
