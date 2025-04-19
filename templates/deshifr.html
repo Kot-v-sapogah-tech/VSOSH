@@ -18,12 +18,12 @@
     }
 
     .container {
-      text-align: center;
       background-color: #fff;
       border-radius: 8px;
       padding: 30px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       width: 400px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
     }
 
     h1 {
@@ -39,9 +39,9 @@
 
     label {
       display: block;
+      margin-bottom: 5px;
       font-size: 16px;
       color: #333;
-      margin-bottom: 5px;
     }
 
     input[type="file"] {
@@ -49,33 +49,30 @@
     }
 
     .custom-file-upload {
-      display: inline-block;
+      display: block;
+      width: 100%;
+      text-align: center;
       padding: 10px 20px;
       font-size: 16px;
       color: white;
       background-color: #4CAF50;
       border-radius: 5px;
       cursor: pointer;
-      text-align: center;
+      margin-top: 5px;
       transition: background-color 0.3s ease;
+      text-decoration: none;
     }
 
     .custom-file-upload:hover {
       background-color: #45a049;
-    }
-
-    .file-name {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #555;
-      word-wrap: break-word;
+      color: white; /* предотвращает смену цвета текста при наведении */
     }
 
     input[type="text"] {
       width: 100%;
       padding: 10px;
       font-size: 16px;
-      border: 1px solid #ddd;
+      border: 1px solid #ccc;
       border-radius: 5px;
     }
 
@@ -94,10 +91,68 @@
 
     .button:hover {
       background-color: #45a049;
+      color: white;
     }
 
-    .button:active {
-      background-color: #388e3c;
+    .generate-password {
+      background-color: #f4b400;
+      padding: 10px 20px;
+      width: auto;
+    }
+
+    .generate-password:hover {
+      background-color: #f4a400;
+      color: white;
+    }
+
+    .file-list {
+      margin-top: 10px;
+    }
+
+    .file-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 5px;
+    }
+
+    .file-item button {
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 5px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .file-item button:hover {
+      background-color: #e60000;
+      color: white;
+    }
+
+    .back-button {
+      display: block;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 14px;
+      margin: 0 auto 20px auto;
+      text-decoration: none;
+      text-align: center;
+      width: fit-content;
+    }
+
+    .back-button:hover {
+      background-color: #45a049;
+      color: white;
+    }
+
+    #dataFileName {
+      font-size: 14px;
+      color: #555;
+      margin-top: 5px;
     }
   </style>
 </head>
@@ -105,7 +160,7 @@
   <div class="container">
     <h1>Дешифровка данных</h1>
     <form action="#" method="POST" enctype="multipart/form-data">
-
+      <a href="/" class="back-button">На главный экран</a>
       <div class="input-group">
         <label for="data">Выберите ZIP архив для расшифровки</label>
         <label class="custom-file-upload" for="data">Выбрать файл</label>
