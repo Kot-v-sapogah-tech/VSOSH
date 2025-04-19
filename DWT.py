@@ -46,7 +46,7 @@ class DWTSteganography:
 
             for channel_idx in range(3):
                 channel = img[:, :, channel_idx]
-                self._simulate_dwt(channel)
+                self._dwt(channel)
                 flat = channel.reshape(-1)
 
                 remaining = bit_len - bit_cursor
@@ -73,7 +73,7 @@ class DWTSteganography:
         for img in image_ndarrays:
             for channel_idx in range(3):
                 channel = img[:, :, channel_idx]
-                self._simulate_dwt(channel)
+                self._dwt(channel)
                 bit_list.append(channel.reshape(-1) & 1)
 
         all_bits = np.concatenate(bit_list)
